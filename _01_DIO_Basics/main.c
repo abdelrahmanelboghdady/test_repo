@@ -41,8 +41,8 @@ int main(void)
 		PORTA=SET_BIT(PORTA,1);
 		_delay_ms(250);
 
-		PORTB=CLR_BIT(PORTB,1);
-		PORTB=SET_BIT(PORTB,0);
+		PORTA=CLR_BIT(PORTA,1);
+		PORTA=SET_BIT(PORTA,0);
 
 	}
 }

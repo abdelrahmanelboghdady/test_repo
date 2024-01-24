@@ -107,8 +107,8 @@ Disassembly of section .text:
   e2:	f1 f7       	brne	.-4      	; 0xe0 <main+0x74>
   e4:	01 97       	sbiw	r24, 0x01	; 1
   e6:	d9 f7       	brne	.-10     	; 0xde <main+0x72>
-  e8:	c1 98       	cbi	0x18, 1	; 24
-  ea:	c0 9a       	sbi	0x18, 0	; 24
+  e8:	d9 98       	cbi	0x1b, 1	; 27
+  ea:	d8 9a       	sbi	0x1b, 0	; 27
   ec:	24 ec       	ldi	r18, 0xC4	; 196
   ee:	39 e0       	ldi	r19, 0x09	; 9
   f0:	c6 cf       	rjmp	.-116    	; 0x7e <main+0x12>

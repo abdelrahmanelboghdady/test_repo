@@ -20,11 +20,29 @@ int main(void)
 	PORTA =0b00000001; // pin A0 -> high (5v)
 	while(1) //super loop
 	{
-		PORTA =0b00000001;
-		for(int i=0;i<4;i++)
-		{
-			_delay_ms(250);
-			PORTA=PORTA<<1;
-		}
+		_delay_ms(250);
+		PORTA=CLR_BIT(PORTA,0);
+		PORTA=SET_BIT(PORTA,1);
+		_delay_ms(250);
+
+		PORTA=CLR_BIT(PORTA,1);
+		PORTA=SET_BIT(PORTA,2);
+		_delay_ms(250);
+
+		PORTA=CLR_BIT(PORTA,2);
+		PORTA=SET_BIT(PORTA,3);
+		_delay_ms(250);
+
+		PORTA=CLR_BIT(PORTA,3);
+		PORTA=SET_BIT(PORTA,2);
+		_delay_ms(250);
+
+		PORTA=CLR_BIT(PORTA,2);
+		PORTA=SET_BIT(PORTA,1);
+		_delay_ms(250);
+
+		PORTB=CLR_BIT(PORTB,1);
+		PORTB=SET_BIT(PORTB,0);
+
 	}
 }

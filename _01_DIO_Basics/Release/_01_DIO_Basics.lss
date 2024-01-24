@@ -3,7 +3,7 @@ _01_DIO_Basics.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000000a6  00000000  00000000  00000054  2**1
+  0 .text         000000f6  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
 
 Disassembly of section .text:
@@ -39,7 +39,7 @@ Disassembly of section .text:
   5c:	de bf       	out	0x3e, r29	; 62
   5e:	cd bf       	out	0x3d, r28	; 61
   60:	0e 94 36 00 	call	0x6c	; 0x6c <main>
-  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <_exit>
+  64:	0c 94 79 00 	jmp	0xf2	; 0xf2 <_exit>
 
 00000068 <__bad_interrupt>:
   68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -49,32 +49,72 @@ Disassembly of section .text:
   6e:	8a bb       	out	0x1a, r24	; 26
   70:	81 e0       	ldi	r24, 0x01	; 1
   72:	8b bb       	out	0x1b, r24	; 27
-  74:	61 e0       	ldi	r22, 0x01	; 1
-  76:	48 ec       	ldi	r20, 0xC8	; 200
-  78:	50 e0       	ldi	r21, 0x00	; 0
-  7a:	6b bb       	out	0x1b, r22	; 27
-  7c:	20 e0       	ldi	r18, 0x00	; 0
-  7e:	30 e0       	ldi	r19, 0x00	; 0
-  80:	0d c0       	rjmp	.+26     	; 0x9c <main+0x30>
-  82:	fa 01       	movw	r30, r20
-  84:	31 97       	sbiw	r30, 0x01	; 1
-  86:	f1 f7       	brne	.-4      	; 0x84 <main+0x18>
-  88:	01 97       	sbiw	r24, 0x01	; 1
-  8a:	d9 f7       	brne	.-10     	; 0x82 <main+0x16>
-  8c:	8b b3       	in	r24, 0x1b	; 27
-  8e:	88 0f       	add	r24, r24
-  90:	8b bb       	out	0x1b, r24	; 27
-  92:	2f 5f       	subi	r18, 0xFF	; 255
-  94:	3f 4f       	sbci	r19, 0xFF	; 255
-  96:	24 30       	cpi	r18, 0x04	; 4
-  98:	31 05       	cpc	r19, r1
-  9a:	79 f3       	breq	.-34     	; 0x7a <main+0xe>
-  9c:	84 ec       	ldi	r24, 0xC4	; 196
-  9e:	99 e0       	ldi	r25, 0x09	; 9
-  a0:	f0 cf       	rjmp	.-32     	; 0x82 <main+0x16>
+  74:	24 ec       	ldi	r18, 0xC4	; 196
+  76:	39 e0       	ldi	r19, 0x09	; 9
+  78:	48 ec       	ldi	r20, 0xC8	; 200
+  7a:	50 e0       	ldi	r21, 0x00	; 0
+  7c:	05 c0       	rjmp	.+10     	; 0x88 <main+0x1c>
+  7e:	ca 01       	movw	r24, r20
+  80:	01 97       	sbiw	r24, 0x01	; 1
+  82:	f1 f7       	brne	.-4      	; 0x80 <main+0x14>
+  84:	21 50       	subi	r18, 0x01	; 1
+  86:	30 40       	sbci	r19, 0x00	; 0
+  88:	21 15       	cp	r18, r1
+  8a:	31 05       	cpc	r19, r1
+  8c:	c1 f7       	brne	.-16     	; 0x7e <main+0x12>
+  8e:	d8 98       	cbi	0x1b, 0	; 27
+  90:	d9 9a       	sbi	0x1b, 1	; 27
+  92:	84 ec       	ldi	r24, 0xC4	; 196
+  94:	99 e0       	ldi	r25, 0x09	; 9
+  96:	fa 01       	movw	r30, r20
+  98:	31 97       	sbiw	r30, 0x01	; 1
+  9a:	f1 f7       	brne	.-4      	; 0x98 <main+0x2c>
+  9c:	01 97       	sbiw	r24, 0x01	; 1
+  9e:	d9 f7       	brne	.-10     	; 0x96 <main+0x2a>
+  a0:	d9 98       	cbi	0x1b, 1	; 27
+  a2:	da 9a       	sbi	0x1b, 2	; 27
+  a4:	84 ec       	ldi	r24, 0xC4	; 196
+  a6:	99 e0       	ldi	r25, 0x09	; 9
+  a8:	fa 01       	movw	r30, r20
+  aa:	31 97       	sbiw	r30, 0x01	; 1
+  ac:	f1 f7       	brne	.-4      	; 0xaa <main+0x3e>
+  ae:	01 97       	sbiw	r24, 0x01	; 1
+  b0:	d9 f7       	brne	.-10     	; 0xa8 <main+0x3c>
+  b2:	da 98       	cbi	0x1b, 2	; 27
+  b4:	db 9a       	sbi	0x1b, 3	; 27
+  b6:	84 ec       	ldi	r24, 0xC4	; 196
+  b8:	99 e0       	ldi	r25, 0x09	; 9
+  ba:	fa 01       	movw	r30, r20
+  bc:	31 97       	sbiw	r30, 0x01	; 1
+  be:	f1 f7       	brne	.-4      	; 0xbc <main+0x50>
+  c0:	01 97       	sbiw	r24, 0x01	; 1
+  c2:	d9 f7       	brne	.-10     	; 0xba <main+0x4e>
+  c4:	db 98       	cbi	0x1b, 3	; 27
+  c6:	da 9a       	sbi	0x1b, 2	; 27
+  c8:	84 ec       	ldi	r24, 0xC4	; 196
+  ca:	99 e0       	ldi	r25, 0x09	; 9
+  cc:	fa 01       	movw	r30, r20
+  ce:	31 97       	sbiw	r30, 0x01	; 1
+  d0:	f1 f7       	brne	.-4      	; 0xce <main+0x62>
+  d2:	01 97       	sbiw	r24, 0x01	; 1
+  d4:	d9 f7       	brne	.-10     	; 0xcc <main+0x60>
+  d6:	da 98       	cbi	0x1b, 2	; 27
+  d8:	d9 9a       	sbi	0x1b, 1	; 27
+  da:	84 ec       	ldi	r24, 0xC4	; 196
+  dc:	99 e0       	ldi	r25, 0x09	; 9
+  de:	fa 01       	movw	r30, r20
+  e0:	31 97       	sbiw	r30, 0x01	; 1
+  e2:	f1 f7       	brne	.-4      	; 0xe0 <main+0x74>
+  e4:	01 97       	sbiw	r24, 0x01	; 1
+  e6:	d9 f7       	brne	.-10     	; 0xde <main+0x72>
+  e8:	c1 98       	cbi	0x18, 1	; 24
+  ea:	c0 9a       	sbi	0x18, 0	; 24
+  ec:	24 ec       	ldi	r18, 0xC4	; 196
+  ee:	39 e0       	ldi	r19, 0x09	; 9
+  f0:	c6 cf       	rjmp	.-116    	; 0x7e <main+0x12>
 
-000000a2 <_exit>:
-  a2:	f8 94       	cli
+000000f2 <_exit>:
+  f2:	f8 94       	cli
 
-000000a4 <__stop_program>:
-  a4:	ff cf       	rjmp	.-2      	; 0xa4 <__stop_program>
+000000f4 <__stop_program>:
+  f4:	ff cf       	rjmp	.-2      	; 0xf4 <__stop_program>
